@@ -25,19 +25,37 @@
 			}
 			.right{
 				float: right;
+				margin-top: -65px;
 			}
 			
 			.button {
 				background-color: black;
 				color:white;
 			}
+					
+			.clear{
+				border: 1px solid #000000;
+				overflow: auto;
+				width: 100%
+				clear: both;
+			}
 			
+			.search{
+				margin-left: 300px;
+				margin-top: -60px;
+				width:130px;
+			}
 			
 		</style>
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner" style= "background-color:yellow">
 			<a><asset:image class="logo" src="meli_logo.png" alt="Grails"/></a>
+			<fieldset class="form search">
+    			<g:form  method="GET">
+	            	<input type="text" name="search" placeholder="Search.." style= "width:400px"> 
+			    </g:form>
+			</fieldset>
 				<span class="right">
 					<g:if test="${session?.user}">
 						<b>Hello my friend! ${session.user.username}</b>
