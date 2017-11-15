@@ -42,7 +42,7 @@
 					<g:if test="${session?.user}">
 						<b>Hello my friend! ${session.user.username}</b>
 						<g:link controller="user" action="logout">
-							<input class="save button" type="button" value="Login" class="button"/> 
+							<input class="save button" type="button" value="Logout" class="button"/> 
 						</g:link>				
 					</g:if>
 					<g:else>
