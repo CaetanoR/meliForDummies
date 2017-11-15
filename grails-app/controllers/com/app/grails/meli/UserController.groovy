@@ -15,20 +15,20 @@ class UserController {
 			def user = User.findByUsernameAndPassword(params.username, params.password)
 			if (user) {
 				session.user = user
-				render "login success"
+				redirect(action:'index')
 			} else {
 				flash.message = "User not found"
-				render "login fail, user not found"
+				redirect(action:'index')
 			}
 		} else if (session.user) {
 			// don't allow login while user is logged in
-			redirect(controller:'main')
+			redirect(action:'index')
 		}
 	}
  
 	def logout = {
 		session.invalidate()
-		redirect(controller:'main')
+		redirect(action:'index')
 	}
 	
 	

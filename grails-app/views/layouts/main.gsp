@@ -17,7 +17,18 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
+		<div id="grailsLogo" role="banner">
+			<a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a>
+			<g:if test="${session?.user}">
+				Hello my friend! ${session.user.username}
+				<g:link controller="user" action="logout">Logout</g:link>				
+			</g:if>
+			<g:else>
+				please, login! 
+				<g:link controller="user" action="login">Login</g:link>				
+			</g:else>
+
+		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
