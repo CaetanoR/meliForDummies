@@ -22,6 +22,7 @@
 			    width: 200px;
 			    margin-top: -30px;
     			margin-bottom: -30px;
+    			
 			}
 			.right{
 				float: right;
@@ -50,7 +51,7 @@
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner" style= "background-color:yellow">
-			<a><asset:image class="logo" src="meli_logo.png" alt="Grails"/></a>
+			<a href="http://localhost:8080/meliForDummies/"><asset:image class="logo" src="meli_logo.png" alt="Grails"/></a>
 			<fieldset class="form search">
     			<g:form  method="GET">
 	            	<input type="text" name="search" placeholder="Search.." style= "width:350px"> 

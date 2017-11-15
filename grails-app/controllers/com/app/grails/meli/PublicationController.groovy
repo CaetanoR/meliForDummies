@@ -7,13 +7,12 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class PublicationController {
-
-	PublicationService service
 	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def list() {
-		service.search(${params.query})
+		flash.message= Publication.findAllByTitleLike("%${params.title}%")
+		redirect(url:'/')
 	}
 	
     def index(Integer max) {
