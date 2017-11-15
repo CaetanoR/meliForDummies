@@ -13,6 +13,7 @@ class UserController {
 	def login = {
 		if (request.method == 'POST') {
 			def user = User.findByUsernameAndPassword(params.username, params.password)
+			
 			if (user) {
 				session.user = user
 				redirect(action:'index')
