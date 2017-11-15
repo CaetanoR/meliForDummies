@@ -43,7 +43,7 @@
 			.search{
 				margin-left: 300px;
 				margin-top: -60px;
-				width:130px;
+				width:126px;
 			}
 			
 		</style>
@@ -53,12 +53,12 @@
 			<a><asset:image class="logo" src="meli_logo.png" alt="Grails"/></a>
 			<fieldset class="form search">
     			<g:form  method="GET">
-	            	<input type="text" name="search" placeholder="Search.." style= "width:400px"> 
+	            	<input type="text" name="search" placeholder="Search.." style= "width:350px"> 
 			    </g:form>
 			</fieldset>
 				<span class="right">
 					<g:if test="${session?.user}">
-						<b>Hello my friend! ${session.user.username}</b>
+						<b>Hello, ${session.user.username}!</b>
 						<g:link controller="user" action="logout">
 							<input class="save button" type="button" value="Logout" class="button"/> 
 						</g:link>				
