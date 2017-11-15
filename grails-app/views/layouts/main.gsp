@@ -7,7 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
+		<title><g:layoutTitle default="MercadoLibre"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
@@ -15,18 +15,43 @@
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
+		
+		<style type="text/css" media="screen">
+			.logo {
+			    height: 100px;
+			    width: 200px;
+			    margin-top: -30px;
+    			margin-bottom: -30px;
+			}
+			.right{
+				float: right;
+			}
+			
+			.button {
+				background-color: black;
+				color:white;
+			}
+			
+			
+		</style>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner">
-			<a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a>
-			<g:if test="${session?.user}">
-				Hello my friend! ${session.user.username}
-				<g:link controller="user" action="logout">Logout</g:link>				
-			</g:if>
-			<g:else>
-				please, login! 
-				<g:link controller="user" action="login">Login</g:link>				
-			</g:else>
+		<div id="grailsLogo" role="banner" style= "background-color:yellow">
+			<a><asset:image class="logo" src="meli_logo.png" alt="Grails"/></a>
+				<span class="right">
+					<g:if test="${session?.user}">
+						<b>Hello my friend! ${session.user.username}</b>
+						<g:link controller="user" action="logout">
+							<input class="save button" type="button" value="Login" class="button"/> 
+						</g:link>				
+					</g:if>
+					<g:else>
+						<b>please, login!</b>
+						<g:link controller="user" action="login">
+							<input type="button" value="Login" class="button"/> 
+						</g:link>				
+					</g:else>
+				</span>
 
 		</div>
 		<g:layoutBody/>
