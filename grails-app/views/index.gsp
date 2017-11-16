@@ -47,7 +47,7 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div  id="status" role="complementary">
+		<div  id="status" role="complementary" style="height: 475px;">
 		Welcome to MeLi
 		</div>
 		<div id="page-body" role="main">
@@ -64,7 +64,7 @@
 			  <tr>
 			  	<td>${publication.title}</td>
 				<td>${publication.description}</td>
-				<td>${publication.price}</td>
+				<td><span>$<span>${publication.price}</td>
 			  </tr>
 			 </g:each>
 			</table>

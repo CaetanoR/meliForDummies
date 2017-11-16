@@ -25,13 +25,15 @@
     			
 			}
 			.right{
-				float: right;
 				margin-top: -65px;
+				float:right
 			}
 			
 			.button {
-				background-color: black;
-				color:white;
+				background-color: yellow;
+				color:black;
+				border:none;
+				text-decoration:none!important;
 			}
 					
 			.clear{
@@ -59,10 +61,20 @@
 			</fieldset>
 				<span class="right">
 					<g:if test="${session?.user}">
-						<a  style="font-weight: bold" > <b>Hello, ${session.user.username}!</b> </a>
+						<span style="display:block">
+						<a  style="font-weight: bold; margin-top: 20px; margin-right:150px;" > <b>Hello, ${session.user.username}!</b> </a>
+						</span>
+						<span style="display:block; margin-top: -56px; margin-left: 110px;">
 						<g:link controller="user" action="logout">
-							<input class="save button" type="button" value="Logout" class="button"/> 
-						</g:link>				
+								<input type="button" value="Logout" class="button"/>
+						</g:link>
+						</span>	
+						<span style="display:block ; margin-top:-60px; margin-left: 170px;">
+						<g:link controller="publication" action="publish">
+							<input class="publish button" type="button" value="Publish" class="button">
+						</g:link>
+						</span>
+								
 					</g:if>
 					<g:else>
 						<b>please, login!</b>
@@ -74,7 +86,7 @@
 
 		</div>
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer" style="background-color: yellow"role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>
