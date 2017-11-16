@@ -8,10 +8,12 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class PublicationController {
 	
+	PublicationService publicationService
+	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def list() {
-		flash.publications = Publication.findAllByTitleLike("%"+params.title+"%")
+		flash.publications = publicationService.findByTitleLike(params.title)
 		redirect(url:'/')
 	}
 	

@@ -8,28 +8,26 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class UserController {
 
+	UserService userService
+	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	
 	def login = {
 		if (request.method == 'POST') {
-			def user = User.findByUsernameAndPassword(params.username, params.password)
-			
+			def user = userService.findUser(params.username, params.password)
 			if (user) {
 				session.user = user
-				redirect(action:'index')
+				redirect(url:'/')
 			} else {
 				flash.message = "User not found"
-				redirect(action:'index')
+				redirect(action:'login')
 			}
-		} else if (session.user) {
-			// don't allow login while user is logged in
-			redirect(action:'index')
-		}
+		} 
 	}
  
 	def logout = {
 		session.invalidate()
-		redirect(action:'index')
+		redirect(url:'/')
 	}
 	
 	
