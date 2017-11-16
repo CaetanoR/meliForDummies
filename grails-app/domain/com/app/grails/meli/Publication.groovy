@@ -5,6 +5,7 @@ class Publication {
 	String title
 	String description
 	Double price
+	User user
 	static belongsTo = User
 	
 	static constraints = {

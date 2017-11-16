@@ -5,108 +5,33 @@ package com.app.grails.meli
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+
 class PublicationController {
 	
 	PublicationService publicationService
 	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-	def list() {
+		
+	def index(Integer max) {
+		redirect(action:'publish')
+	}
+	
+	def publish() {
+		if (request.method == 'POST') {
+			def user = session.user
+			
+			if(user){
+				params.user = user.id
+				def publication = new Publication(params)
+				publication.save()
+			}else{
+				flash.message("you must be logged in order to publish")
+			}
+		}
+	}
+	
+	def listByLike() {
 		flash.publications = publicationService.findByTitleLike(params.title)
 		redirect(url:'/')
 	}
-	
-	
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Publication.list(params), model:[publicationInstanceCount: Publication.count()]
-    }
-
-    def show(Publication publicationInstance) {
-        respond publicationInstance
-    }
-
-    def create() {
-        respond new Publication(params)
-    }
-
-    @Transactional
-    def save(Publication publicationInstance) {
-        if (publicationInstance == null) {
-            notFound()
-            return
-        }
-
-        if (publicationInstance.hasErrors()) {
-            respond publicationInstance.errors, view:'create'
-            return
-        }
-
-        publicationInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'publication.label', default: 'Publication'), publicationInstance.id])
-                redirect publicationInstance
-            }
-            '*' { respond publicationInstance, [status: CREATED] }
-        }
-    }
-
-    def edit(Publication publicationInstance) {
-        respond publicationInstance
-    }
-
-    @Transactional
-    def update(Publication publicationInstance) {
-        if (publicationInstance == null) {
-            notFound()
-            return
-        }
-
-        if (publicationInstance.hasErrors()) {
-            respond publicationInstance.errors, view:'edit'
-            return
-        }
-
-        publicationInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Publication.label', default: 'Publication'), publicationInstance.id])
-                redirect publicationInstance
-            }
-            '*'{ respond publicationInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(Publication publicationInstance) {
-
-        if (publicationInstance == null) {
-            notFound()
-            return
-        }
-
-        publicationInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Publication.label', default: 'Publication'), publicationInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'publication.label', default: 'Publication'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
 }

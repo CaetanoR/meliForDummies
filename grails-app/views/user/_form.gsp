@@ -19,4 +19,3 @@
 	<g:textField name="password" required="" value="${userInstance?.password}"/>
 
 </div>
-

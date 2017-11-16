@@ -53,13 +53,13 @@
 		<div id="grailsLogo" role="banner" style= "background-color:yellow">
 			<a href="http://localhost:8080/meliForDummies/"><asset:image class="logo" src="meli_logo.png" alt="Grails"/></a>
 			<fieldset class="form search">
-    			<g:form action="list" controller="publication" method="GET">
+    			<g:form action="listByLike" controller="publication" method="GET">
 	            	<input type="text" name="title" placeholder="Search.." style= "width:350px"> 
 			    </g:form>
 			</fieldset>
 				<span class="right">
 					<g:if test="${session?.user}">
-						<a href="#" style="font-weight: bold" > <b>Hello, ${session.user.username}!</b> </a>
+						<a  style="font-weight: bold" > <b>Hello, ${session.user.username}!</b> </a>
 						<g:link controller="user" action="logout">
 							<input class="save button" type="button" value="Logout" class="button"/> 
 						</g:link>				

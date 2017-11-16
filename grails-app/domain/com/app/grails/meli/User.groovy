@@ -4,6 +4,7 @@ class User {
 
 	String username
 	String password
+	
 	static hasMany = [publications: Publication]
 	static mapping = {
 		joinTable: false
