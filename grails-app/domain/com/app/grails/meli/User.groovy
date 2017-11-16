@@ -11,6 +11,6 @@ class User {
 	
 	
     static constraints = {
-    	username size: 3..10
+    	username unique: true, size: 3..10
 	}
 }
