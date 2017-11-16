@@ -67,7 +67,7 @@
 				<td>${publication.description}</td>
 				<td><span>$<span>${publication.price}</td>
 				<td>
-					<g:link controller="purchase" action="purchase" params.publication="${publication.id}">
+					<g:link controller="purchase" action="purchase" params="[publication: publication.id]" >
 						<input class="save button" type="button" value="Purchase" class="button"/> 
 					</g:link>
 				</td>
