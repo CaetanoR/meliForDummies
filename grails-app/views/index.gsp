@@ -59,12 +59,18 @@
 			    <th>Product</th>
 			    <th>Description</th>
 			    <th>Price</th>
+			    <th></th>
 			  </tr>
 			 <g:each in="${flash.publications}" var="publication">
 			  <tr>
 			  	<td>${publication.title}</td>
 				<td>${publication.description}</td>
 				<td><span>$<span>${publication.price}</td>
+				<td>
+					<g:link controller="purchase" action="purchase" params.publication="${publication.id}">
+						<input class="save button" type="button" value="Purchase" class="button"/> 
+					</g:link>
+				</td>
 			  </tr>
 			 </g:each>
 			</table>
