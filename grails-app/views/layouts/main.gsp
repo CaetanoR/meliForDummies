@@ -59,7 +59,7 @@
 			</fieldset>
 				<span class="right">
 					<g:if test="${session?.user}">
-						<b>Hello, ${session.user.username}!</b>
+						<a href="#" style="font-weight: bold" > <b>Hello, ${session.user.username}!</b> </a>
 						<g:link controller="user" action="logout">
 							<input class="save button" type="button" value="Logout" class="button"/> 
 						</g:link>				
