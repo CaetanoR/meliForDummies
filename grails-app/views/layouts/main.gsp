@@ -53,8 +53,8 @@
 		<div id="grailsLogo" role="banner" style= "background-color:yellow">
 			<a href="http://localhost:8080/meliForDummies/"><asset:image class="logo" src="meli_logo.png" alt="Grails"/></a>
 			<fieldset class="form search">
-    			<g:form  method="GET">
-	            	<input type="text" name="search" placeholder="Search.." style= "width:350px"> 
+    			<g:form action="list" controller="publication" method="GET">
+	            	<input type="text" name="title" placeholder="Search.." style= "width:350px"> 
 			    </g:form>
 			</fieldset>
 				<span class="right">
