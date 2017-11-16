@@ -78,11 +78,16 @@
 					margin-top: 0;
 				}
 			}
+				
+				
+			
+			
+			
 		</style>
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
+		<div  id="status" role="complementary">
 			<h1>Application Status</h1>
 			<ul>
 				<li>App version: <g:meta name="app.version"/></li>
@@ -108,11 +113,25 @@
 			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
 			   content you may choose. Below is a list of controllers that are currently deployed in this application,
 			   click on each to execute its default action:</p>
+		
+		<table style="display:block; margin-top: 50px; margin-left: 75px; padding-left: 65px; width: 400px; border: 0px " class="customers">
+			  <tr>
+			    <th>Product</th>
+			    <th>Description</th>
+			    <th>Price</th>
+			  </tr>
+			  <g:each in="${flash.message}" var="publication">
+		  		<tr>
+				    <td>${publication.title}</td>
+				    <td>${publication.description}</td>
+				    <td>${publication.price}</td>
+			  	</tr>
+			 
+        	</g:each> 
+		</table>
+		
         	
-        	<g:each in="${flash.message}" var="publication">
-        	<p>Title: ${publication.title}</p>
-        	<p>Description: ${publication.description}</p>
-        	</g:each>
+       		
 			<!-- <div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
@@ -122,5 +141,8 @@
 				</ul>
 			</div> -->
 		</div>
+		
 	</body>
 </html>
+
+<!-- -->
