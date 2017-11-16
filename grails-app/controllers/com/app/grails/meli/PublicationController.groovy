@@ -11,9 +11,10 @@ class PublicationController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def list() {
-		flash.message= Publication.findAllByTitleLike("%"+params.title+"%")
+		flash.publications = Publication.findAllByTitleLike("%"+params.title+"%")
 		redirect(url:'/')
 	}
+	
 	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)

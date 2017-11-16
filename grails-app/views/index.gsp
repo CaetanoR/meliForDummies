@@ -108,30 +108,41 @@
 			</ul>
 		</div>
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
-		
-		<table style="display:block; margin-top: 50px; margin-left: 75px; padding-left: 65px; width: 400px; border: 0px " class="customers">
-			  <tr>
-			    <th>Product</th>
-			    <th>Description</th>
-			    <th>Price</th>
-			  </tr>
-			  <g:each in="${flash.message}" var="publication">
-		  		<tr>
-				    <td>${publication.title}</td>
-				    <td>${publication.description}</td>
-				    <td>${publication.price}</td>
-			  	</tr>
-			 
-        	</g:each> 
-		</table>
-		
+			<h1>Welcome to MeLi</h1>
+			       	
+        	<g:each in="${flash.publications}" var="publication">
         	
-       		
+	        	<ol class="property-list publication">
+					<g:if test="${publication?.title}">
+					<li class="fieldcontain">
+						<span id="title-label" class="property-label"><g:message code="publication.title.label" default="Title" /></span>
+						
+							<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${publication}" field="title"/></span>
+						
+					</li>
+					</g:if>
+				
+					<g:if test="${publication?.description}">
+					<li class="fieldcontain">
+						<span id="description-label" class="property-label"><g:message code="publication.description.label" default="Description" /></span>
+						
+							<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${publication}" field="description"/></span>
+						
+					</li>
+					</g:if>
+				
+					<g:if test="${publication?.price}">
+					<li class="fieldcontain">
+						<span id="price-label" class="property-label"><g:message code="publication.price.label" default="Price" /></span>
+						
+							<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${publication}" field="price"/></span>
+						
+					</li>
+					</g:if>
+				
+				</ol>
+				
+        	</g:each>
 			<!-- <div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
