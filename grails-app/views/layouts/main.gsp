@@ -35,7 +35,7 @@
     			
 			}
 			.right{
-				margin-top: -65px;
+				margin-top: -60px;
 				float:right
 			}
 			
@@ -72,14 +72,14 @@
 				<span class="right">
 					<g:if test="${session?.user}">
 						<span style="display:block">
-						<a  style="font-weight: bold; margin-top: 20px; margin-right:150px;" > <b>Hello, ${session.user.username}!</b> </a>
+						<a  style="font-weight: bold; margin-top: 20px; margin-right:150px; text-decoration:none; color:black" > <b>Hi, ${session.user.username}!</b> </a>
 						</span>
-						<span style="display:block; margin-top: -56px; margin-left: 110px;">
+						<span style="display:block; margin-top: -51px; margin-left: 110px;">
 						<g:link controller="user" action="logout">
 								<input type="button" value="Logout" class="button"/>
 						</g:link>
 						</span>	
-						<span style="display:block ; margin-top:-60px; margin-left: 170px;">
+						<span style="display:block ; margin-top:-54px; margin-left: 170px;">
 						<g:link controller="publication" action="publish">
 							<input class="publish button" type="button" value="Publish" class="button">
 						</g:link>
