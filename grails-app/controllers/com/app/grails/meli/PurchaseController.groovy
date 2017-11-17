@@ -12,10 +12,11 @@ class PurchaseController {
 			params.user = user.id
 			def purchase = new Purchase(params)
 			purchase.save()
+			flash.message = "The purchase was successful!"
 		}else{
-			flash.message("you must be logged in order to purchase")
+			flash.message = "You must be logged in order to purchase"
 		}
-		redirect(controller: "publication", action: "listByLike")
+		redirect(url:"/")
 	}
 	
 }
