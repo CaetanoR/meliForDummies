@@ -50,31 +50,32 @@
 		<div  id="status" role="complementary" style="height: 475px;">
 		Welcome to MeLi
 		</div>
-		<div id="page-body" role="main">
-			<h1></h1>
+		<div id="page-body" class="content" role="main">
 			
-			<g:if test="${flash?.publications}">      	
-	       	<table style="display:block; margin-top: 50px; margin-left: 75px; padding-left: 65px; width: 400px; border: 0px " class="customers">
-			  <tr>
-			    <th>Product</th>
-			    <th>Description</th>
-			    <th>Price</th>
-			    <th></th>
-			  </tr>
-			 <g:each in="${flash.publications}" var="publication">
-			  <tr>
-			  	<td>${publication.title}</td>
-				<td>${publication.description}</td>
-				<td><span>$<span>${publication.price}</td>
-				<td>
-					<g:link controller="purchase" action="purchase" params="[publication: publication.id]" >
-						<input class="save button" type="button" value="Purchase" class="button"/> 
-					</g:link>
-				</td>
-			  </tr>
-			 </g:each>
-			</table>
+		<div class="list-group">
+	     	<g:if test="${flash?.publications}">
+				<g:each in="${flash.publications}" var="publication">
+
+					<g:form controller="purchase" action="purchase" params="[publication: publication.id]">
+						 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1">Titulo: ${publication.title}</h5>
+								<small class="text-muted">insert date..</small>
+							</div>
+							<p class="mb-1">Description: ${publication.description}</p>
+							
+							<small class="text-muted">only $ ${publication.price}</small>
+							<span class="pull-right">
+								<span class="glyphicon glyphicon-shopping-cart"></span>	
+								<g:submitButton name="Comprar", type="submit" class="glyphicon glyphicon-shopping-cart" />    	
+					        </span>
+						</a>
+					</g:form>	
+													
+				</g:each>
 			</g:if>
+		</div>
+					
 		</div>
 		
 	</body>
